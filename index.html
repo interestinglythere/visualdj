@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>EXPLOSIONS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Super ridiculous visuals.">
-    <meta name="author" content="">
-    <script type="text/javascript" src="js/d3.v3.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
-    <!--<script type="text/javascript" src="/static/js/jquery.jplayer.min.js"></script>-->
-    <script type="text/javascript">
+<head>
 
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-38880263-3']);
-    _gaq.push(['_trackPageview']);
+<meta charset="utf-8">
+<title>VisualDJ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Super ridiculous visuals. Powered by D3.js.">
+<meta name="author" content="Gabe Ruiz, Sean Zhu">
+<link rel="shortcut icon" href="data:image/vndmicrosofticon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAD///8A////AP///wD///8A9/f3Cevr6xzf398r5ubmIvX19Q79/f0A////AP///wD///8A////AP///wD///8A////AP///wD///8A7OzsGbm5uWKFjY+ncYKJwnyHjLSoqal739/fK/z8/AP///8A////AP///wD///8A////AP///wD///8A7OzsGaOkpIFYfIvgPoyu+juPs/08jrH8TIOa65KVl5jj4+Ml////AP///wD///8A////AP///wD///8A7e3tGKWlpX5WZoDoPn/Q/T97yP89hbL/PYip/zuMrv1TgZXlt7i4Y/n5+Qf///8A////AP///wD///8A9/f3Cbm5uWFiXofgSV3a/UZt8v9GbPL/RWzv/z6BvP89ian9QIin+JGSkpre3t4u8vLyEvz8/AP///8A////AOnp6R2Hh4+oU0mz+klf1f9Gb/H/R27w/0Zt8P9Eb+f/PYir/z+FqvptbH7Pk5KjmLKyt23Z2doy9/f3Cv///wDf398rd3WIwVJHuv1OT73/RXHx/0Zu8P9HbvD/RWzw/zuLx/9Fapv6XFp95WhlidZybpTJmJamkdjY2DX8/PwD6OjoH4WEja1SSLX8Ukiy/01TxP9GbOn/RXDx/0Vs7/9Paq39Y06G+mNTg/BeW33nY2KD3HBtk8murbRx7+/vFfb29gq1tLVpYl2P4FNIuv1SR7P/UUi1/1RLw/9tS7H9dEyY/XJMl/x2TZr6c1CV919ZfulmZIfXk5Kll+Tk5Cb///8A6+vrHKuqq3dvbIjLXleZ6VhSkPBuUIX4c02S+nBMlfxxTJb9cUyW/HNNmPpvUpD1Yl+C3pKQpJri4uIm////AP///wDy8vIR19fXOLm5uWKOjI+hgl2J5XVRifZyTZr6cUyW/XFMlv1xTJb8dU+Z+GZhid2oqK977e3tGP///wD///8A////AP39/QDy8vIRs7G0b4tnkdt5WILudFCR+HJNmvpxTJb8cUyW/HZQnvZ/e5C50M/QQfr6+gb///8A////AP///wD///8A+vr6BsrKykmTeJjAgF2G6HhWgPB2VIbzdVGQ93hTkvOCaY7Utra2ZfLy8hH///8A////AP///wD///8A////AP///wDr6+scsKywdJFyl8mGYY7jgl6J54VgjeWOcZLJr6yvdevr6xz///8A////AP///wD///8A////AP///wD///8A/Pz8A+bm5iG+vb5apJqljp2On5+lnKaMwsLDVuvr6xz9/f0A////AP///wD///8A////AP///wD///8A////AP///wD///8A9/f3Cuvr6xrm5uYi7OzsGff39wn///8A////AP///wD///8A//8AAPj/AADgPwAA4D8AAMAfAACADwAAgAMAAIADAADAAQAA4AEAAPgDAAD8AwAA/AcAAP4PAAD/HwAA//8AAA==">
+<script type="text/javascript" src="js/d3.v3.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+<script type="text/javascript">
+var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-38880263-3']); _gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-
-    </script>
-    
-    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <style type="text/css">
 body {
   background: #000000;
@@ -128,68 +124,71 @@ body.nocontrols .header, body.nocontrols .controls {
   font-size: 9px;
 }
 </style>
-  </head>
-  <body>
-    <textarea style="display:none;" id="exported"></textarea>
-    <div class="row">
-        <div class="header">
-          <span style="color: #00FFFF;">Explosions.</span> 
-          <span>Mousemove:
-          <select id="mousemoveSelector">
-            <option id="mousemove-yoloswag"       value="yoloswag"      >` #yoloswag</option>
-            <option id="mousemove-circlereverse"  value="circlereverse" >1 Circles In</option>
-            <option id="mousemove-basiccircle"    value="basiccircle"   >2 Circles Out</option>
-            <option id="mousemove-triangles"      value="triangles"     >3 Triangles</option>
-            <option id="mousemove-hexagon"        value="hexagon"       >4 Hexagon</option>
-            <option id="mousemove-fireworks"      value="fireworks"     >5 Fireworks</option>
-            <option id="mousemove-miniworks"      value="miniworks" selected>6 Mini Fireworks</option>
-            <option id="mousemove-foursquare"     value="foursquare"    >7 Four Square</option>
-            <option id="mousemove-jazz"           value="jazz"          >8 Jazz</option>
-            <option id="mousemove-confetti"       value="confetti"      >9 Confetti</option>
-            <option id="mousemove-linestomouse"   value="linestomouse"  >0 Lines to Mouse</option>
-            <option id="mousemove-biglines"       value="biglines"      >- Big Lines</option>
-            <option id="mousemove-drawing"        value="drawing"       >= Drawing</option>
-          </select>
-          </span>
 
-          <span>Click:
-          <select id="mousedownSelector">
-            <option id="mousedown-yoloswag"       value="yoloswag"      >` #yoloswag</option>
-            <option id="mousedown-circlereverse"  value="circlereverse" >1 Circles In</option>
-            <option id="mousedown-basiccircle"    value="basiccircle"   >2 Circles Out</option>
-            <option id="mousedown-triangles"      value="triangles"     >3 Triangles</option>
-            <option id="mousedown-hexagon"        value="hexagon" selected>4 Hexagon</option>
-            <option id="mousedown-fireworks"      value="fireworks"     >5 Fireworks</option>
-            <option id="mousedown-miniworks"      value="miniworks"     >6 Mini Fireworks</option>
-            <option id="mousedown-foursquare"     value="foursquare"    >7 Four Square</option>
-            <option id="mousedown-jazz"           value="jazz"          >8 Jazz</option>
-            <option id="mousedown-confetti"       value="confetti"      >9 Confetti</option>
-            <option id="mousedown-linestomouse"   value="linestomouse"  >0 Lines to Mouse</option>
-            <option id="mousedown-biglines"       value="biglines"      >- Big Lines</option>
-            <option id="mousedown-drawing"        value="drawing"       >= Drawing</option>
-          </select>
-          </span>
-          <a style="color: #00FFFF; font-family: Lato; font-weight:200" href="https://github.com/gruiz17/explosions">Source Code</a>
-        </div>
+</head>
+<body>
+
+<textarea style="display:none;" id="exported"></textarea>
+<div class="row">
+    <div class="header">
+      <span style="color: #00FFFF;">Explosions.</span> 
+      <span>Mousemove:
+      <select id="mousemoveSelector">
+        <option id="mousemove-yoloswag"       value="yoloswag"      >` #yoloswag</option>
+        <option id="mousemove-circlereverse"  value="circlereverse" >1 Circles In</option>
+        <option id="mousemove-basiccircle"    value="basiccircle"   >2 Circles Out</option>
+        <option id="mousemove-triangles"      value="triangles"     >3 Triangles</option>
+        <option id="mousemove-hexagon"        value="hexagon"       >4 Hexagon</option>
+        <option id="mousemove-fireworks"      value="fireworks"     >5 Fireworks</option>
+        <option id="mousemove-miniworks"      value="miniworks" selected>6 Mini Fireworks</option>
+        <option id="mousemove-foursquare"     value="foursquare"    >7 Four Square</option>
+        <option id="mousemove-jazz"           value="jazz"          >8 Jazz</option>
+        <option id="mousemove-confetti"       value="confetti"      >9 Confetti</option>
+        <option id="mousemove-linestomouse"   value="linestomouse"  >0 Lines to Mouse</option>
+        <option id="mousemove-biglines"       value="biglines"      >- Big Lines</option>
+        <option id="mousemove-drawing"        value="drawing"       >= Drawing</option>
+      </select>
+      </span>
+
+      <span>Click:
+      <select id="mousedownSelector">
+        <option id="mousedown-yoloswag"       value="yoloswag"      >` #yoloswag</option>
+        <option id="mousedown-circlereverse"  value="circlereverse" >1 Circles In</option>
+        <option id="mousedown-basiccircle"    value="basiccircle"   >2 Circles Out</option>
+        <option id="mousedown-triangles"      value="triangles"     >3 Triangles</option>
+        <option id="mousedown-hexagon"        value="hexagon" selected>4 Hexagon</option>
+        <option id="mousedown-fireworks"      value="fireworks"     >5 Fireworks</option>
+        <option id="mousedown-miniworks"      value="miniworks"     >6 Mini Fireworks</option>
+        <option id="mousedown-foursquare"     value="foursquare"    >7 Four Square</option>
+        <option id="mousedown-jazz"           value="jazz"          >8 Jazz</option>
+        <option id="mousedown-confetti"       value="confetti"      >9 Confetti</option>
+        <option id="mousedown-linestomouse"   value="linestomouse"  >0 Lines to Mouse</option>
+        <option id="mousedown-biglines"       value="biglines"      >- Big Lines</option>
+        <option id="mousedown-drawing"        value="drawing"       >= Drawing</option>
+      </select>
+      </span>
+      <a style="color: #00FFFF; font-family: Lato; font-weight:200" href="https://github.com/gruiz17/explosions">Source Code</a>
     </div>
-    <div class="row">
-        <div class="controls">
-          <button class="button-record" id="button-record-start">Record</button>
-          <button class="button-record" id="button-record-stop">Stop</button>
-          <button class="button-record" id="button-record-reset">Reset</button>
-          <input  class="button-record" value="1" size="1" style="text-align: center;" id="input-play-timescale" />
-          <button class="button-record" id="button-play-start">Play</button>
-          <button class="button-record" id="button-play-stop">Stop</button>
-          <button class="button-record" id="button-play-reset">Reset</button>
-          <button style="display:none;" class="button-export" id="button-play-import" onclick="importFromTextarea();">Import</button>
-          <button style="display:none;" class="button-export" id="button-play-export" onclick="exportToTextarea();">Export</button>
-          <button class="button-record" id="button-controls" onclick="$('body').toggleClass('nocontrols');">Controls</button>
-          <button id="button-export-exporter" onclick="toggleExporter();">Import/Export</button>
-        </div>
+</div>
+<div class="row">
+    <div class="controls">
+      <button class="button-record" id="button-record-start">Record</button>
+      <button class="button-record" id="button-record-stop">Stop</button>
+      <button class="button-record" id="button-record-reset">Reset</button>
+      <input  class="button-record" value="1" size="1" style="text-align: center;" id="input-play-timescale" />
+      <button class="button-record" id="button-play-start">Play</button>
+      <button class="button-record" id="button-play-stop">Stop</button>
+      <button class="button-record" id="button-play-reset">Reset</button>
+      <button style="display:none;" class="button-export" id="button-play-import" onclick="importFromTextarea();">Import</button>
+      <button style="display:none;" class="button-export" id="button-play-export" onclick="exportToTextarea();">Export</button>
+      <button class="button-record" id="button-controls" onclick="$('body').toggleClass('nocontrols');">Controls</button>
+      <button id="button-export-exporter" onclick="toggleExporter();">Import/Export</button>
     </div>
-    <div id="svgContainer"></div>
-    <!--<script type="text/javascript" src="js/string.js"></script>-->
-    <script type="text/javascript" src="js/visuals.js"></script>
-    <script type="text/javascript" src="js/explosions.js"></script>
-  </body>
+</div>
+<div id="svgContainer"></div>
+<!--<script type="text/javascript" src="js/string.js"></script>-->
+<script type="text/javascript" src="js/visuals.js"></script>
+<script type="text/javascript" src="js/explosions.js"></script>
+
+</body>
 </html>
