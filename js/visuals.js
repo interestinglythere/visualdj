@@ -1,7 +1,7 @@
-visuals = {
+visualDj.visuals = {
 
 	yoloswag: function(mx, my, h, w, timeScale) {
-		svg.append("svg:text")
+		this.svg.append("svg:text")
 		.text("#yoloswag")
 		.attr("font-size","16").attr("font-family","Lato").attr("fill","#ffffff").attr("fill-opacity",1)
 		.attr("x",mx).attr("y",my)
@@ -12,12 +12,12 @@ visuals = {
 	hexagon: function(mx, my, h, w, timeScale) {
 		var rotation=0;
 		for (var k = 0; k < 6; k++) {
-			svg.append("svg:circle")
+			this.svg.append("svg:circle")
 			.attr("transform","rotate(" + rotation + ", " + mx + "," + my +")")
 			.attr("cx",mx)
 			.attr("cy",my)
 			.attr("r", 10)
-			.style("stroke",colors(++ci)).style("fill", colors(++ci)).style("stroke-opacity",0.6).style("fill-opacity",0.4)
+			.style("stroke",this.colors(++this.ci)).style("fill", this.colors(++this.ci)).style("stroke-opacity",0.6).style("fill-opacity",0.4)
 			.transition().duration(timeScale*500).ease(Math.sqrt).attr("cx",mx + 200).attr("cy", my + 200)
 			.transition().duration(timeScale*500).ease(Math.sqrt).attr("cx",mx - 200)
 			.transition().duration(timeScale*500).ease(Math.sqrt).attr("cx",mx - 200).attr("cy", my - 200)
@@ -39,10 +39,10 @@ visuals = {
 		var rotations = ["0", "125"," 235"];
 		for (var k = 0; k < 3; k++) {
 			for (var i = 0; i < rotations.length; i++) {
-				svg.append("svg:path")
+				this.svg.append("svg:path")
 				.attr("transform","rotate("+rotations[i]+", " + mx + "," + my +")")
 				.attr("d", "M " + p1init + " L "+p2init + " L "+p3init + " L " + p1init)
-				.style("stroke", colors(++ci)).style("stroke-opacity",1).style("stroke-width","5px").style("fill-opacity",0)
+				.style("stroke", this.colors(++this.ci)).style("stroke-opacity",1).style("stroke-width","5px").style("fill-opacity",0)
 				.transition().duration(timeScale*500).ease(Math.sqrt)
 					.attr("d", "M " + p1 + " L "+p2 + " L "+p3 + " L " + p1)
 					.style("stroke-opacity",1e-6).remove();
@@ -57,9 +57,9 @@ visuals = {
 				thunnidx=300, thunnidy=300;
 			if (randx < 0){thunnidx *= -1;}
 			if (randy < 0){thunnidy*=-1;}
-			svg.append("svg:line")
+			this.svg.append("svg:line")
 			.attr("x1",mx).attr("y1",my).attr("x2",mx).attr("y2",my)
-			.style("stroke",colors(++ci)).style("stroke-width", "10px")
+			.style("stroke",this.colors(++this.ci)).style("stroke-width", "10px")
 			.transition()
 				.duration(timeScale*1000).ease(Math.sqrt)
 				.attr("x1",mx+randx).attr("y1",my+randy).attr("x2",mx+randx+thunnidx).attr("y2",my+randy+thunnidy)
@@ -74,9 +74,9 @@ visuals = {
 				thunnidx=30, thunnidy=30;
 			if (randx < 0){thunnidx *= -1;}
 			if (randy < 0){thunnidy*=-1;}
-			svg.append("svg:line")
+			this.svg.append("svg:line")
 			.attr("x1",mx).attr("y1",my).attr("x2",mx).attr("y2",my)
-			.style("stroke",colors(++ci)).style("stroke-width", "10px")
+			.style("stroke",this.colors(++this.ci)).style("stroke-width", "10px")
 			.transition().duration(timeScale*1000).ease(Math.sqrt)
 				.attr("x1",mx+randx).attr("y1",my+randy)
 				.attr("x2",mx+randx+thunnidx).attr("y2",my+randy+thunnidy)
@@ -86,9 +86,9 @@ visuals = {
 
 	jazz: function(mx, my, h, w, timeScale) {
 		for (var k = 0; k < 5; k++) {
-			svg.append("svg:circle")
+			this.svg.append("svg:circle")
 				.attr("cx",mx).attr("cy",my).attr("r",6)
-				.style("stroke",colors(++ci)).style("fill",colors(++ci))
+				.style("stroke",this.colors(++this.ci)).style("fill",this.colors(++this.ci))
 				.transition().duration(timeScale*800).ease(Math.sqrt)
 					.attr("cx",mx+Math.floor(Math.random()*200)-100).attr("cy",my+Math.floor(Math.random()*200)-100)
 					.style("stroke-opacity",1e-6).style("fill-opacity",1e-6).remove();
@@ -97,22 +97,22 @@ visuals = {
 
 	drawing: function(mx, my, h, w, timeScale) {
 		for (k = 0; k < 7; k++) {
-			svg.append("svg:circle")
+			this.svg.append("svg:circle")
 				.attr("cx",mx).attr("cy",my).attr("r",4)
 				.style("stroke","#00FFFF").style("fill","#00FFFF")
 				.transition().delay(2000).duration(timeScale*800)
 					.attr("cx",mx+Math.floor(Math.random()*200)-100).attr("cy",my+Math.floor(Math.random()*200)-100)
-					.style("stroke",colors(++ci)).style("fill",colors(++ci)).style("stroke-opacity",1e-6).style("fill-opacity",1e-6).remove();
+					.style("stroke",this.colors(++this.ci)).style("fill",this.colors(++this.ci)).style("stroke-opacity",1e-6).style("fill-opacity",1e-6).remove();
 		}
 	},
 
 	foursquare: function(mx, my, h, w, timeScale) {
 		var rotations = ["0", "90", "180"," 270"];
 		for (var i = 0; i < rotations.length; i++) {
-			svg.append("svg:rect")
+			this.svg.append("svg:rect")
 				.attr("transform","rotate("+rotations[i]+", " + mx + "," + my +")")
 				.attr("x",mx).attr("y",my).attr("width",0).attr("height",0)
-				.style("stroke",colors(++ci)).style("stroke-opacity",1)
+				.style("stroke",this.colors(++this.ci)).style("stroke-opacity",1)
 				.transition().duration(timeScale*500).ease(Math.sqrt)
 					.attr("x",mx+40).attr("y",my+40).attr("width",100).attr("height",100)
 					.style("stroke-opacity",1e-6).remove();
@@ -133,34 +133,34 @@ visuals = {
 		];
 		for (var i = 0; i < offsets.length; i++) {
 			var o = offsets[i];
-			svg.append("svg:line")
+			this.svg.append("svg:line")
 				.attr("x1", mx + w*o[0][0] + o[0][1])
 				.attr("y1", my + h*o[1][0] + o[1][1])
 				.attr("x2", mx + w*o[2][0] + o[2][1])
 				.attr("y2", my + h*o[3][0] + o[3][1])
-				.style("stroke",colors(++ci)).style("stroke-width", "10px").style("stroke-opacity",1)
+				.style("stroke",this.colors(++this.ci)).style("stroke-width", "10px").style("stroke-opacity",1)
 				.transition().duration(timeScale*500).ease(Math.sqrt).attr("x1",mx).attr("y1",my).attr("x2",mx).attr("y2",my).remove();
 		}
 	},
 
 	circlereverse: function(mx, my, h, w, timeScale) {
-		svg.append("svg:circle")
-			.attr("cx",mx).attr("cy",my).attr("r",w/2).style("stroke",colors(++ci))
+		this.svg.append("svg:circle")
+			.attr("cx",mx).attr("cy",my).attr("r",w/2).style("stroke",this.colors(++this.ci))
 			.transition().duration(timeScale*500).attr("r",0).style("stroke-opacity",1e-6).remove();
 	},
 
 	basiccircle: function(mx, my, h, w, timeScale) {
-		svg.append("svg:circle")
-			.attr("cx",mx).attr("cy",my).attr("r",0).style("stroke",colors(++ci))
+		this.svg.append("svg:circle")
+			.attr("cx",mx).attr("cy",my).attr("r",0).style("stroke",this.colors(++this.ci))
 			.transition().duration(timeScale*1000).ease(Math.sqrt).attr("r",w/2).style("stroke-opacity",1e-6).remove();
 	},
 
 	miniworks: function(mx, my, h, w, timeScale) {
 		var transforms = ["155,155","-155,155","155,-155","-155,-155"];
 		for (var i = 0; i < transforms.length; i++) {
-			svg.append("svg:circle")
+			this.svg.append("svg:circle")
 				.attr("cx",mx).attr("cy",my).attr("r",10)
-				.style("stroke",colors(++ci)).style("fill",colors(ci)).style("stroke-opacity",0.5)
+				.style("stroke",this.colors(++this.ci)).style("fill",this.colors(this.ci)).style("stroke-opacity",0.5)
 				.transition()
 					.attr("transform","translate("+transforms[i]+")").duration(timeScale*1000).ease(Math.sqrt).attr("r",25)
 					.style("stroke-opacity",1e-6).style("fill-opacity",1e-6).remove();
@@ -170,9 +170,9 @@ visuals = {
 	fireworks: function(mx, my, h, w, timeScale) {
 		var transforms = ["0,-400","0,400","400,0","-400,0","355,355","-355,355","355,-355","-355,-355"];
 		for (var i = 0; i < transforms.length; i++) {
-			svg.append("svg:circle")
+			this.svg.append("svg:circle")
 				.attr("cx",mx).attr("cy",my).attr("r",10)
-				.style("stroke",colors(++ci)).style("fill",colors(ci)).style("stroke-opacity",0.5)
+				.style("stroke",this.colors(++this.ci)).style("fill",this.colors(this.ci)).style("stroke-opacity",0.5)
 				.transition()
 					.attr("transform","translate("+transforms[i]+")").duration(timeScale*1000).ease(Math.sqrt).attr("r",25)
 					.style("stroke-opacity",1e-6).style("fill-opacity",1e-6).remove();

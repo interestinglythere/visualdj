@@ -131,7 +131,7 @@ body.nocontrols .header, body.nocontrols .controls {
 <textarea style="display:none;" id="exported"></textarea>
 <div class="row">
     <div class="header">
-      <span style="color: #00FFFF;">Explosions.</span> 
+      <span style="color: #00FFFF;">VisualDJ.</span> 
       <span>Mousemove:
       <select id="mousemoveSelector">
         <option id="mousemove-yoloswag"       value="yoloswag"      >` #yoloswag</option>
@@ -167,28 +167,29 @@ body.nocontrols .header, body.nocontrols .controls {
         <option id="mousedown-drawing"        value="drawing"       >= Drawing</option>
       </select>
       </span>
-      <a style="color: #00FFFF; font-family: Lato; font-weight:200" href="https://github.com/gruiz17/explosions">Source Code</a>
+      <a style="color: #00FFFF; font-family: Lato; font-weight:200" href="https://github.com/gruiz17/explosions">Source</a>
     </div>
 </div>
 <div class="row">
     <div class="controls">
-      <button class="button-record" id="button-record-start">Record</button>
-      <button class="button-record" id="button-record-stop">Stop</button>
-      <button class="button-record" id="button-record-reset">Reset</button>
+      <button class="button-record" id="button-record-start" title="[">Record</button>
+      <button class="button-record" id="button-record-stop" title="]">Pause</button>
+      <button class="button-record" id="button-record-reset" title="\">Erase</button>
       <input  class="button-record" value="1" size="1" style="text-align: center;" id="input-play-timescale" />
-      <button class="button-record" id="button-play-start">Play</button>
-      <button class="button-record" id="button-play-stop">Stop</button>
-      <button class="button-record" id="button-play-reset">Reset</button>
-      <button style="display:none;" class="button-export" id="button-play-import" onclick="importFromTextarea();">Import</button>
-      <button style="display:none;" class="button-export" id="button-play-export" onclick="exportToTextarea();">Export</button>
+      <button class="button-record" id="button-play-start" title="space">Play</button>
+      <button class="button-record" id="button-play-stop" title="Z">Pause</button>
+      <button class="button-record" id="button-play-reset" title="X">Stop</button>
       <button class="button-record" id="button-controls" onclick="$('body').toggleClass('nocontrols');">Controls</button>
-      <button id="button-export-exporter" onclick="toggleExporter();">Import/Export</button>
+      <button class="button-record" id="button-export-exporter" onclick="visualDj.toggleExporter();">Import/Export</button>
+      <button class="button-export" style="display:none;" id="button-play-import" onclick="visualDj.importFromTextarea();">Import</button>
+      <button class="button-export" style="display:none;" id="button-play-export" onclick="visualDj.exportToTextarea();">Export</button>
+      <button class="button-export" style="display:none;" id="button-export-exporter" onclick="visualDj.toggleExporter();">Close</button>
     </div>
 </div>
 <div id="svgContainer"></div>
 <!--<script type="text/javascript" src="js/string.js"></script>-->
-<script type="text/javascript" src="js/visuals.js"></script>
 <script type="text/javascript" src="js/explosions.js"></script>
+<script type="text/javascript" src="js/visuals.js"></script>
 
 </body>
 </html>
